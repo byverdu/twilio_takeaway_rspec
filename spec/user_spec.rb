@@ -2,7 +2,6 @@ require "user"
 
 describe User do
 
-	#let(:order) { double :order }
 	let(:dish)  { double :dish } 
 	let(:user)  { User.new('Bob','07720860376') }
 
@@ -27,18 +26,18 @@ describe User do
 	context 'placing the order' do
 		
 		it "can accept more than one dish" do
-			expect(user.place_order(dish,dish)).to eq([[dish,dish]])
+			expect(user.place_order(dish,dish)).to eq([dish,dish])
 		end
 
 		it "can place an order" do
-			expect(user.place_order(dish)).to eq([[dish]])
+			expect(user.place_order(dish)).to eq([dish])
 		end
 
 
 		it "changes his status after placing an order" do
 			user.place_order dish
 
-			expect(user.status).to eq('ordered')
+			expect(user.status).to eq('order placed')
 		end
 	end
 end

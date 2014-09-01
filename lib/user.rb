@@ -7,12 +7,14 @@ class User
 		@name     = name
 		@number   = number
 		@status   = nil
-		@my_order = []
+		@my_order ||= []
 	end
 
 	def place_order(*dish)
-		@status   = 'ordered'
+		@status   = 'order placed'
 		
 		@my_order << dish
+
+		@my_order.flatten
 	end
 end

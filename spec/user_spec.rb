@@ -2,7 +2,7 @@ require "user"
 
 describe User do
 
-	let(:order) { double :order }
+	#let(:order) { double :order }
 	let(:dish)  { double :dish } 
 	let(:user)  { User.new('Bob','07720860376') }
 

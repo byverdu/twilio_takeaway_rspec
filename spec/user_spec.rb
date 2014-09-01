@@ -1,9 +1,13 @@
 require "user"
+require "order"
+require "dish"
 
 describe User do
 
-	let(:dish)  { double :dish } 
-	let(:user)  { User.new('Bob','07720860376') }
+	let(:burger)  { Dish.new('burger',7.5) }
+	let(:order)   { Order.new }
+
+	let(:user)    { User.new('Bob','07720860376') }
 
 	context 'when is initialized' do
 		
@@ -16,26 +20,21 @@ describe User do
 		end
 
 		it "has a status for placing an order" do
-			expect(user.status).to eq(nil)
+			expect(user.status).to be_nil
 		end
 		it "knows that can order" do
-			expect(user.my_order).to eq([]) 
+			expect(user.my_order).to be_a(order.class) 
 		end
 	end
 
 	context 'placing the order' do
+
+		it "can place an order with quantity" do
+			expect(user.place_order(burger, 1)).to eq([burger])
+		end
 		
-		it "can accept more than one dish" do
-			expect(user.place_order(dish,dish)).to eq([dish,dish])
-		end
-
-		it "can place an order" do
-			expect(user.place_order(dish)).to eq([dish])
-		end
-
-
 		it "changes his status after placing an order" do
-			user.place_order dish
+			user.place_order(burger,1)
 
 			expect(user.status).to eq('order placed')
 		end

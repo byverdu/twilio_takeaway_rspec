@@ -1,20 +1,23 @@
+require "./lib/order"
+
 class User
+     
+	attr_accessor :name, :number, :my_order, :status
 
-	attr_reader    :name, :number
-	attr_accessor  :my_order, :status
-
-	def initialize(name,number)
+	def initialize(name=nil,number=nil)
 		@name     = name
 		@number   = number
 		@status   = nil
-		@my_order ||= []
+		@my_order = Order.new
 	end
 
-	def place_order(*dish)
+	def place_order(dish, quantity)
 		@status   = 'order placed'
 		
-		@my_order << dish
+		dish.quantity = quantity
 
-		@my_order.flatten
+		@my_order.user_dishes << dish 
+
+		@my_order.user_dishes.flatten
 	end
 end

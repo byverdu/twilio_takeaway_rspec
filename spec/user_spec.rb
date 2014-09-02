@@ -23,7 +23,7 @@ describe User do
 			expect(user.status).to be_nil
 		end
 		it "knows that can order" do
-			expect(user.to_order).to be_a(order.class) 
+			expect(user.order).to be_a(order.class) 
 		end
 	end
 

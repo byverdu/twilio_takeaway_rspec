@@ -9,27 +9,29 @@ describe Order do
 	let(:user)   { User.new }
 
 	it "will contain selected dishes" do
-		expect(user.to_order.dishes).to be_a(Array)
+		expect(user.order.dishes).to be_a(Array)
 	end
 
 	it "has a total price" do
-		expect(user.to_order.total_price).to be_a(Float)
+		expect(user.order.total_price).to be_a(Float)
 	end
 
-	it "can proceed an order" do
-		expect(user.to_order).to respond_to(:proceed)
-
+	it "can proceed one item" do
 		user.place_order(burger,2)
 
-		expect(user.to_order.total_price).to eq(11.0)
+		expect(user.order.proceed).to eq("Your order costs #{user.order.total_price}")
+	end
+
+	it "can proceed all the order" do
+		user.place_order(burger,2)
+		user.place_order(fries, 3)
+
+		expect(user.order.proceed).to eq("Your order costs #{user.order.total_price}")
 	end
 
 	it "prints out the order" do
 		user.place_order(burger,2)
 
-		expect(user.to_order.print_out).to eq(["#{burger.quantity} #{burger.name}"])
+		expect(user.order.print_out).to eq(["#{burger.quantity} #{burger.name}"])
 	end
-
-
-
 end

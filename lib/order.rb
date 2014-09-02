@@ -11,6 +11,16 @@ class Order
 
 	def proceed
 
+		sub_total = 0
+
+		@dishes.map do |dish|  
+
+			sub_total = dish.price * dish.quantity 
+
+			@total_price += sub_total
+		end
+		
+		"Your order costs #{@total_price}"
 	end
 
 	def print_out

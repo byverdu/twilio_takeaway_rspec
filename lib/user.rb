@@ -2,13 +2,13 @@ require "./lib/order"
 
 class User
      
-	attr_accessor :name, :number, :my_order, :status
+	attr_accessor :name, :number, :to_order, :status
 
 	def initialize(name=nil,number=nil)
 		@name     = name
 		@number   = number
 		@status   = nil
-		@my_order = Order.new
+		@to_order = Order.new
 	end
 
 	def place_order(dish, quantity)
@@ -16,8 +16,8 @@ class User
 		
 		dish.quantity = quantity
 
-		@my_order.user_dishes << dish 
+		@to_order.dishes << dish 
 
-		@my_order.user_dishes.flatten
+		@to_order.dishes.flatten
 	end
 end

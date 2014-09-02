@@ -1,9 +1,20 @@
+require "./lib/dish"
+
 class Order
 
-	attr_reader :user_dishes
+	attr_accessor  :dishes, :total_price
 
 	def initialize
-		@user_dishes = []
+		@dishes = []
+		@total_price = 0.0
+	end
+
+	def proceed
+
+	end
+
+	def print_out
+		@dishes.map { |dish| "#{dish.quantity} #{dish.name}"}
 	end
 
 end

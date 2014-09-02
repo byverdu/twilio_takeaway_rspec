@@ -1,10 +1,15 @@
 require "user"
 require "order"
 require "dish"
+require "hide"
+require "takeaway"
 
 describe User do
 
-	let(:burger)  { Dish.new('burger',7.5) }
+	include Sms
+
+	let(:takeaway) { Takeaway.new('Fisherman','03487935472') }
+	let(:burger)  { Dish.new('scampi',7.5) }
 	let(:order)   { Order.new }
 
 	let(:user)    { User.new('Bob','07720860376') }
@@ -38,5 +43,11 @@ describe User do
 
 			expect(user.status).to eq('order placed')
 		end
+
+		xit 'sends an Sms saying that the order will be delivered in an hour' do
+		expect(user.client.account.messages).to receive(:create)
+		user.send_sms
+	end
+
 	end
 end

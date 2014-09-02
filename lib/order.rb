@@ -11,7 +11,7 @@ class Order
 
 	def proceed
 
-		sub_total = 0
+		sub_total = 0.0
 
 		@dishes.map do |dish|  
 

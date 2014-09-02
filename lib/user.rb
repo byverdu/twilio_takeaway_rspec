@@ -1,8 +1,15 @@
+require 'rubygems'
 require "./lib/order"
+require "./lib/hide"
+
 
 class User
+
+	include Sms
      
-	attr_accessor :name, :number, :order, :status
+	attr_accessor :name, :number, :order, :status 
+
+	attr_reader :client
 
 	def initialize(name=nil,number=nil)
 		@name     = name
@@ -19,5 +26,16 @@ class User
 		@order.dishes << dish 
 
 		@order.dishes.flatten
+	end
+
+	def send_sms
+
+		@client = Twilio::REST::Client.new Sms::ACCOUNT_SID, Sms::AUTH_TOKEN
+
+		@client.account.messages.create(
+      :from => '+443487935472',
+      :to   => '+447720860376',
+      :body => "Customer: #{user.name} \n Total: #{order.total_price} \n Your order will be at your door in one hour #{Time.now.hour + 1}:#{Time.now.min}"
+    )
 	end
 end

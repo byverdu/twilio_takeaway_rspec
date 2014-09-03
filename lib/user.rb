@@ -9,8 +9,6 @@ class User
      
 	attr_accessor :name, :number, :order, :status 
 
-	attr_reader :client
-
 	def initialize(name=nil,number=nil)
 		@name     = name
 		@number   = number
@@ -30,12 +28,13 @@ class User
 
 	def send_sms
 
-		@client = Twilio::REST::Client.new Sms::ACCOUNT_SID, Sms::AUTH_TOKEN
+		client = Twilio::REST::Client.new Sms::ACCOUNT_SID, Sms::AUTH_TOKEN
+		
 
-		@client.account.messages.create(
+		client.account.messages.create(
       :from => '+443487935472',
       :to   => '+447720860376',
-      :body => "Customer: #{user.name} \n Total: #{order.total_price} \n Your order will be at your door in one hour #{Time.now.hour + 1}:#{Time.now.min}"
+      :body => "Customer: #{@name} \n Total: #{@order.total_price} \n Your order will be at your door in one hour #{Time.now.hour + 1}:#{Time.now.min}"
     )
 	end
 end

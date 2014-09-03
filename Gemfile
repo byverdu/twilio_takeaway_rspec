@@ -6,5 +6,6 @@ gem 'twilio-ruby'
 
 group :development, :test do
 
+	gem 'webmock'
 	gem 'rspec'
 end

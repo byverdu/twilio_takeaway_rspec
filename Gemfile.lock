@@ -1,7 +1,10 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.3.6)
     builder (3.2.2)
+    crack (0.4.2)
+      safe_yaml (~> 1.0.0)
     diff-lcs (1.2.5)
     jwt (1.0.0)
     multi_json (1.10.1)
@@ -17,10 +20,14 @@ GEM
     rspec-mocks (3.0.4)
       rspec-support (~> 3.0.0)
     rspec-support (3.0.4)
+    safe_yaml (1.0.3)
     twilio-ruby (3.12.2)
       builder (>= 2.1.2)
       jwt (~> 1.0.0)
       multi_json (>= 1.3.0)
+    webmock (1.18.0)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
 
 PLATFORMS
   ruby
@@ -28,3 +35,4 @@ PLATFORMS
 DEPENDENCIES
   rspec
   twilio-ruby
+  webmock

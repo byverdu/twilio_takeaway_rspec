@@ -45,8 +45,11 @@ describe User do
 		end
 
 		xit 'sends an Sms saying that the order will be delivered in an hour' do
-		expect(user.client.account.messages).to receive(:create)
-		user.send_sms
+		#Net::HTTP.get('www.twilio.com', '/') 
+
+		#expect(user.client.account.messages).to receive(:create)
+		expect(user.send_sms).to raise_error
+		assert_requested :post, "https://ACc69bd16f1eccc531c4b30a0c8860b69d:8ba3355237c1778ee5af24b8f8fb119b@api.twilio.com/2010-04-01/Accounts/ACc69bd16f1eccc531c4b30a0c8860b69d/Messages.json".to_return(:status => 200, :body => "", :headers => {})
 	end
 
 	end

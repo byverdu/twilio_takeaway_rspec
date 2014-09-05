@@ -6,6 +6,12 @@ gem 'twilio-ruby'
 
 group :development, :test do
 
-	gem 'webmock'
+	gem 'capybara'
+	gem 'cucumber'
+	gem 'cucumber-sinatra'
+	gem 'launchy'
 	gem 'rspec'
+	gem 'shotgun'
+	gem 'webmock'
+
 end

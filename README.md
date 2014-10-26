@@ -1,7 +1,5 @@
 
 ## Takeaway system
-============
-
 
 Write a class Takeaway.
 
@@ -20,3 +18,15 @@ Make sure that your Takeaway class is thoroughly tested and that you use mocks a
 However, if your Takeaway class is loaded into IRB and the order is placed, the text should actually be sent
 
 A free account on Twilio will only allow you to send texts to "verified" numbers. Use your mobile phone number, don't worry about the customer's mobile phone
+
+### Technologies used
+
+1. Ruby
+2. RSpec
+
+### How to run the tests
+
+1. `clone https://github.com/byverdu/twilio_takeaway_rspec.git`
+2. `cd twilio_takeaway_rspec`
+3. `bundle install`
+3. `rspec -fd`
